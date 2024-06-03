@@ -1,4 +1,6 @@
+import {ArrowDownCircleIcon, LifebuoyIcon} from '@heroicons/react/24/solid';
 import {character} from '../../data/data';
+import {episodes} from '../../data/data';
 function CharacterDetail(){
     return(
         <div style={{flex:1}}>
@@ -21,7 +23,22 @@ function CharacterDetail(){
                     <div className="actions"><button className='btn btn--primary'>Add to Favorite</button></div>
                 </div>
             </div>
-        <div className="character-episodes"></div>
+        <div className="character-episodes">
+            <div className="title">
+            <h2>List of Episodes:</h2>
+            <button><ArrowDownCircleIcon  className='icon'/></button>
+            
+            </div>
+            <ul>
+                {episodes.map((item,index)=>(<li key={item.id}>
+                    <div className="">
+                       {String(index+1).padStart(2,"0")} - {item.episode} : <strong>{item.name}</strong>
+                    </div>
+                    <div className="badge badge--secondary">{item.air_date}</div>
+                </li>))}
+            </ul>
+            
+        </div>
         </div>
     )
 }
